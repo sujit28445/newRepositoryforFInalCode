@@ -114,7 +114,7 @@ public class PHPTravelTestCases {
     }
     @Test(priority = 18)
     public void getcurrentdate() throws InterruptedException {
-    bankPaymentPage.getcurrentdateTime();
+        //ValidateThatpayNowisClickableafterValidInput();
         basePage.redirectToShoppingCartPage();
         shoppingCart.RedirectstoOrderSummaryPage();
         summaryPage.RedirectToSelectPaymentPage();
@@ -123,8 +123,10 @@ public class PHPTravelTestCases {
         paymentDetailsPage.EnterCVV();
         paymentDetailsPage.EnterExpiryDate();
         paymentDetailsPage.clickOnPayNow();
-        Thread.sleep(1000);
-        bankPaymentPage.CheckMerchantName();
+       // Assert.assertTrue(bankPaymentPage.verifyMerchantName());
+        Assert.assertTrue(bankPaymentPage.verifyAmount());
+        Assert.assertTrue(bankPaymentPage.verifyCardNumber());
+        Assert.assertTrue(bankPaymentPage.verifyTransactionTime());
     }
 
     @AfterClass
