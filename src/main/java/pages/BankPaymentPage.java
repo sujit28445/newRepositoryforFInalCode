@@ -36,6 +36,14 @@ public class BankPaymentPage extends BasePage{
     private String DiscountCheckBox = "//input[@name='promo']";
     @FindBy(xpath = "//a[@class='button-main-content']")
     WebElement UseAnotherPaymentOptionButton;
+    @FindBy(xpath = "//span[text()='Thank you for your purchase.']")
+    private WebElement SuccessMessage;
+    public boolean successMessageVisible()
+    {
+        switchDefaultContent();
+        boolean Flag =  wait(SuccessMessage).isDisplayed();
+        return Flag;
+    }
 
     public boolean verifyCreditDebitCardLogoVisible()
     {

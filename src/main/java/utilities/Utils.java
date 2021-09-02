@@ -66,7 +66,7 @@ public class Utils extends Setup {
             return Options.get(index);
         }catch (IndexOutOfBoundsException e)
         {
-            holdExecutionForSeconds(10);
+            holdExecutionForSeconds(100);
             List<WebElement> Options = driver.findElements(By.xpath(xpath));
             return Options.get(index);
         }
