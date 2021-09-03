@@ -15,7 +15,7 @@ public class Setup {
 
     public static WebDriver launchBrowser(String browser) {
         if (browser.equalsIgnoreCase("chrome")) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", "D:\\Automation Learning\\chromedriver_win32 (1)\\chromedriver.exe");
             driver = new ChromeDriver();
         } else if (browser.equalsIgnoreCase("firefox")) {
             System.setProperty("webdriver.gecko.driver", "geckodriver.exe");

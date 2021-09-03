@@ -113,13 +113,15 @@ public class PHPTravelTestCases {
        // Assert.assertTrue(paymentDetailsPage.checkredirectiontopaymentconfirmationPage());
     }
     @Test(priority = 18)
-    public void getcurrentdate() throws InterruptedException {
-        ValidateThatpayNowisClickableafterValidInput();
-
-       Assert.assertTrue(bankPaymentPage.verifyMerchantName());
+    public void getcurrentdate() {
+        genericPage();
+        System.out.println("start");
+        Assert.assertTrue(bankPaymentPage.verifyMerchantName());
+        System.out.println("done1");
         Assert.assertTrue(bankPaymentPage.verifyAmount());
         Assert.assertTrue(bankPaymentPage.verifyCardNumber());
-        //Assert.assertTrue(bankPaymentPage.verifyTransactionTime());
+        Assert.assertTrue(bankPaymentPage.verifyTransactionTime());
+
     }
     @Test(priority=13)
     public void verifyOnClickingOKButtonWithValidOTPRedirectToOrderSuccssfullScreen()
@@ -128,6 +130,16 @@ public class PHPTravelTestCases {
         bankPaymentPage.enterOTP();
         bankPaymentPage.clickOnOKButton();
         Assert.assertTrue(bankPaymentPage.successMessageVisible());
+    }
+    public void genericPage(){
+        basePage.redirectToShoppingCartPage();
+        shoppingCart.RedirectstoOrderSummaryPage();
+        summaryPage.RedirectToSelectPaymentPage();
+        selectPaymentPage.ClickonCreditorDebitcard();
+        paymentDetailsPage.EnterCardNumber();
+        paymentDetailsPage.EnterCVV();
+        paymentDetailsPage.EnterExpiryDate();
+        paymentDetailsPage.clickOnPayNow();
     }
     @AfterClass
     public void tearDown() {

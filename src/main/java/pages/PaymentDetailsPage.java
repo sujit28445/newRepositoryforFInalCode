@@ -86,7 +86,8 @@ public class PaymentDetailsPage extends BasePage{
         click(PayNowOnPaymntDetailPage);
         //driver.switchTo().frame(0);
         driver.switchTo().window(driver.getWindowHandle());
-        driver.switchTo().frame(0);
+        holdExecutionForSeconds(10);
+        frameSwitchTo(0);
 
     }
     @FindBy(xpath = "//h1[normalize-space()='COCO STORE']")

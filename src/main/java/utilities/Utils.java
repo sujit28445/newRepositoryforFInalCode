@@ -62,16 +62,27 @@ public class Utils extends Setup {
     //hold the list of elements
     public WebElement listHolder(int index , String xpath) {
         try {
+            //wait(driver.findElement(By.xpath(xpath)));
+            holdExecution(10);
             List<WebElement> Options = driver.findElements(By.xpath(xpath));
             return Options.get(index);
         }catch (IndexOutOfBoundsException e)
         {
-            holdExecutionForSeconds(100);
+            holdExecutionForSeconds(10);
             List<WebElement> Options = driver.findElements(By.xpath(xpath));
             return Options.get(index);
         }
 
     }
+
+
+    public List<WebElement> listHolder1(String xpath) {
+        wait(driver.findElement(By.xpath(xpath)));
+        List<WebElement> Options = (driver.findElements(By.xpath(xpath)));
+        return Options;
+
+    }
+
     //hold Execution
     public static void holdExecutionForSeconds(int seconds) {
         try {
@@ -104,7 +115,7 @@ public class Utils extends Setup {
     //currentTime
     public String currentTime()
     {
-        if(System.getProperty("webdriver.chrome.driver") == "chromedriver.exe")
+        if(System.getProperty("webdriver.chrome.driver") == "D:\\Automation Learning\\chromedriver_win32 (1)\\chromedriver.exe")
         {
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("M/dd/yyyy h:");
             LocalDateTime now = LocalDateTime.now();

@@ -26,7 +26,7 @@ public class BankPaymentPage extends BasePage{
     private WebElement PayNowButton;
     @FindBy(xpath = "//button[@class='btn btn-sm btn-success']")
     private WebElement OKButton;
-    private String MerchantDetails = "//div[@class='col-xs-7']";
+    private String MerchantDetails = "//p[@id='merchant_name']"; ////p[@id='merchant_name'] //div[@class='col-xs-7']
     @FindBy(id = "PaRes")
     private WebElement InputOTP;
     @FindBy(xpath = "//span[text()='Transaction failed']")
@@ -38,6 +38,14 @@ public class BankPaymentPage extends BasePage{
     WebElement UseAnotherPaymentOptionButton;
     @FindBy(xpath = "//span[text()='Thank you for your purchase.']")
     private WebElement SuccessMessage;
+    @FindBy (xpath="//img[@class='left img-responsive']")
+    WebElement Banklogo;
+
+    public void clickonbanklogo()
+    {
+        click(Banklogo);
+    }
+
     public boolean successMessageVisible()
     {
         switchDefaultContent();
@@ -85,13 +93,13 @@ public class BankPaymentPage extends BasePage{
     public void clickOnPayNow()
     {
         click(PayNowButton);
-        holdExecutionForSeconds(5);
         frameSwitchTo(0);
+        clickonbanklogo();
     }
 
     public boolean verifyMerchantName()
     {
-        boolean Flag = (listHolder(0 , MerchantDetails).getText()).contains(properties.getProperty("MerchantName"));
+        boolean Flag = (listHolder(0,MerchantDetails)).getText().contains((properties.getProperty("MerchantName")));
         return Flag;
     }
     public boolean verifyAmount()
